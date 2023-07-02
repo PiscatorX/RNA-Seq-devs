@@ -1,4 +1,6 @@
 # RNA-seq-devs
- RNA-seq and bioinformatic tools 
-# Basic introduction to linux
-There are lots of good introductions to linux online. We will use this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf
+ Building an RNA-seq workflow for Ion Torrent data 
+## Basic introduction to Linux
+There are lots of good introductions to Linux online. I recommend this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf
+
+# 
