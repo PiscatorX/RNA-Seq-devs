@@ -1,7 +1,7 @@
-# RNA-Seq-devs
+# RNA-Seq workflow development
  Building an RNA-seq workflow for Ion Torrent data 
 ## Basic introduction to Linux
-There are lots of good introductions to Linux online. I recommend this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf it's purely for sentimental reasons as it is written by my PhD supervisor.
+There are lots of good introductions to Linux online. I recommend this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf it's purely for sentimental reasons as it was written by my PhD supervisor.
 
 ## HPC2 cluster access and commands
 
