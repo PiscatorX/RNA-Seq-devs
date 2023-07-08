@@ -7,7 +7,7 @@ There are lots of good introductions to Linux online. I recommend this one https
 
 How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOWTO_login
 
-## RNA workflow development
+## RNA-Seq workflow development
 We are essentially going to follow the RNA SOP provided by H3Africa https://h3abionet.github.io/H3ABionet-SOPs/RNA-Seq and we will split it into three phases as described in the workflow.
 
 
