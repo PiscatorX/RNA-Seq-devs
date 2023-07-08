@@ -22,6 +22,7 @@ We are essentially going to follow the RNA SOP provided by H3Africa https://h3ab
 [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
 ```
+
 mkdir rawreads_fastqc
 fastqc  --threads 6 -o rawreads_fastqc  TestData/*
 
@@ -34,6 +35,7 @@ Here we created the rawreads_fastqc  output directory using the mkdir command an
 To aggregate the fastqc results into on report we use multiqc. 
 
 ```
+
 multiqc  fastqc_rawreads  -o  multiqc_rawreads
 
 ```
@@ -49,23 +51,23 @@ Therefore, we loop through the files using for loop. We create a directory for o
 mkdir trimmed_reads
 for SE_read in TestData/*.fastq
 do
-#extract the read name without the extension
-read_basename=$(basename ${SE_read} .fastq)
-#extract the read name
-output_readname=$(basename ${SE_read})
-echo ${read_basename}
-trimmomatic SE \
-    ${SE_read} \
-    trimmed_reads/${output_readname} \
-    -trimlog trimmed_reads/trim_${SE_read} \
-    -threads 6 \
-    -phred33 \
-    -trimlog trimmed_reads/${read_basename}.log \
-    -summary trimmed_reads/${read_basename}.summary \
-    LEADING:10 \
-    TRAILING:10 \
-    SLIDINGWINDOW:25:10 \
-    MINLEN:50
+    #extract the read name without the extension
+    read_basename=$(basename ${SE_read} .fastq)
+    #extract the read name
+    output_readname=$(basename ${SE_read})
+    echo ${read_basename}
+    trimmomatic SE \
+	${SE_read} \
+	trimmed_reads/${output_readname} \
+	-trimlog trimmed_reads/trim_${SE_read} \
+	-threads 6 \
+	-phred33 \
+	-trimlog trimmed_reads/${read_basename}.log \
+	-summary trimmed_reads/${read_basename}.summary \
+	LEADING:10 \
+	TRAILING:10 \
+	SLIDINGWINDOW:25:10 \
+	MINLEN:50
 done
 
 ```
