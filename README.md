@@ -42,7 +42,7 @@ As multiqc will create the output directory, we do not have to create one.
 [TRIMMOMATIC](http://www.usadellab.org/cms/?page=trimmomatic)
 
 The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only process one pair or one read at a time. This means you have run n times where n = number of reads.
-Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames using ``${SE_read%.*}```. For readability we write command line arguments over multiple lines. This is acheived by using a backslash ```\``` which is an escape character telling bash that the command continues on the next line.
+Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames using ```basename``` command. For readability we write command line arguments over multiple lines. This is acheived by using a backslash which is an escape character telling bash that the command continues on the next line.
 
 ```
 
