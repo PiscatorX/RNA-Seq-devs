@@ -7,7 +7,11 @@ There are lots of good introductions to Linux online. I recommend this one https
 
 How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOWTO_login
 
-I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from Stellebosch Center for Bioinformatics and Computational Biology on the HPC cluster, so very relevant for our purpose.
+I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from Stellebosch Center for Bioinformatics and Computational Biology on the HPC cluster, very relevant for our purpose.
+
+### Other useful cluster related links
+- Cluster job submission commands [[LINK]](https://uwaterloo.ca/math-faculty-computing-facility/resources/researchers/computing/sun-grid-engine-sge-batch-queuing-system/basic-sun-grid-engine-sge-job)
+- Cluster job submission commands [[LINK]](https://uwaterloo.ca/math-faculty-computing-facility/resources/researchers/computing/sun-grid-engine-sge-batch-queuing-system/basic-sun-grid-engine-sge-job)
 
 ## RNA-Seq workflow development
 We are essentially going to follow the RNA SOP provided by H3Africa https://h3abionet.github.io/H3ABionet-SOPs/RNA-Seq and we will split it into three phases as described in the workflow.
@@ -35,4 +39,30 @@ multiqc  fastqc_rawreads  -o  multiqc_rawreads
 ```
 As multiqc will create the output directory, we do not have to create one.
 
-https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf
+[TRIMMOMATIC](http://www.usadellab.org/cms/?page=trimmomatic)
+
+The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only one pair or one read at a time. This means you have run n times where n = number of reads.
+Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames.
+
+```
+mkdir trimmed_reads
+for SE_read in TestData/*.fastq
+do
+#extract the readname without the extension
+read_basename=${SE_read%.*}
+output_readname=$(basename ${SE_read})
+echo ${read_basename}
+trimmomatic SE \
+    ${SE_read} \
+    trimmed_reads/${output_readname} \
+    -trimlog trim_${SE_read} \
+    -threads 6 \
+    -phred33 \
+    -trimlog ${read_basename}.log \
+    -summary ${read_basename}.summary \
+    LEADING:10 \
+    TRAILING:10 \
+    SLIDINGWINDOW:25:10 \
+    MINLEN:50
+done
+
