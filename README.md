@@ -1,7 +1,7 @@
 # RNA-Seq-devs
  Building an RNA-seq workflow for Ion Torrent data 
 ## Basic introduction to Linux
-There are lots of good introductions to Linux online. I recommend this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf it's purely for sentimental reasons as it written by my PhD supervisor.
+There are lots of good introductions to Linux online. I recommend this one https://www.bioinf.wits.ac.za/courses/linux/handout.pdf it's purely for sentimental reasons as it is written by my PhD supervisor.
 
 ## HPC2 cluster access and commands
 
@@ -23,7 +23,7 @@ fastqc  --threads 6 -o rawreads_fastqc  TestData/*
 Here we created the fastqc_raw  output directory using the mkdir command and then we run fastqc on the reads in the Testdata directory using 6 threads.
 
 
-[multiqc](https://multiqc.info)
+[MULTIQC](https://multiqc.info)
 
 To aggregate the fastqc results into on report we use multiqc. 
 
@@ -31,5 +31,8 @@ To aggregate the fastqc results into on report we use multiqc.
 multiqc  fastqc_rawreads  -o  multiqc_rawreads
 
 ```
-As multiqc will create the output director we do not have to create one
+As multiqc will create the output directory, we do not have to create one.
+
+
+
 
