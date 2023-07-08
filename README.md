@@ -11,7 +11,7 @@ How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOW
 We are essentially going to follow the RNA SOP provided by H3Africa https://h3abionet.github.io/H3ABionet-SOPs/RNA-Seq and we will split it into three phases as described in the workflow.
 
 
-##PHASE1
+## PHASE1
 
 [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
