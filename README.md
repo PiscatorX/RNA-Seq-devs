@@ -41,28 +41,31 @@ As multiqc will create the output directory, we do not have to create one.
 
 [TRIMMOMATIC](http://www.usadellab.org/cms/?page=trimmomatic)
 
-The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only one pair or one read at a time. This means you have run n times where n = number of reads.
-Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames.
+The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only process one pair or one read at a time. This means you have run n times where n = number of reads.
+Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames using ``${SE_read%.*}```. For readability we write command line arguments over multiple lines. This is acheived by using a backslash ```\``` which is an escape character telling bash that the command continues on the next line.
 
 ```
+
 mkdir trimmed_reads
 for SE_read in TestData/*.fastq
 do
-#extract the readname without the extension
-read_basename=${SE_read%.*}
+#extract the read name without the extension
+read_basename=$(basename ${SE_read} .fastq)
+#extract the read name
 output_readname=$(basename ${SE_read})
 echo ${read_basename}
 trimmomatic SE \
     ${SE_read} \
     trimmed_reads/${output_readname} \
-    -trimlog trim_${SE_read} \
+    -trimlog trimmed_reads/trim_${SE_read} \
     -threads 6 \
     -phred33 \
-    -trimlog ${read_basename}.log \
-    -summary ${read_basename}.summary \
+    -trimlog trimmed_reads/${read_basename}.log \
+    -summary trimmed_reads/${read_basename}.summary \
     LEADING:10 \
     TRAILING:10 \
     SLIDINGWINDOW:25:10 \
     MINLEN:50
 done
 
+```
