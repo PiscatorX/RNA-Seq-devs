@@ -20,7 +20,7 @@ mkdir rawreads_fastqc
 fastqc  --threads 6 -o rawreads_fastqc  TestData/*
 
 ````
-Here we created the fastqc_raw  output directory using the mkdir command and then we run fastqc on the reads in the Testdata directory using 6 threads.
+Here we created the rawreads_fastqc  output directory using the mkdir command and then we run fastqc on the reads in the Testdata directory using 6 threads.
 
 
 [MULTIQC](https://multiqc.info)
