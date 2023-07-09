@@ -5,12 +5,21 @@ There are lots of good introductions to Linux online. I recommend this one https
 
 ## HPC2 cluster access and commands
 
-How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOWTO_login
+- How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOWTO_login
 
-I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from Stellebosch Center for Bioinformatics and Computational Biology on the HPC cluster, very relevant for our purpose.
+- I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from Stellebosch Center for Bioinformatics and Computational Biology on the HPC cluster, very relevant for our purpose.
+- 
 
-### Other useful cluster related links
-- Cluster job submission commands [[LINK]](https://uwaterloo.ca/math-faculty-computing-facility/resources/researchers/computing/sun-grid-engine-sge-batch-queuing-system/basic-sun-grid-engine-sge-job)
+
+### Useful commands: Check the HPC2 [HOWTO check up on jobs])(https://www0.sun.ac.za/hpc/index.php?title=HOWTO_check_up_on_jobs) for details
+- quota -s # check disk quota
+- qstat # check the jobs queue
+- qstat -fx <JobID> # check job using JobID details
+- qdel  <JobID> # remove job from queue
+- pstat # overview of cluster usage
+
+
+### Useful cluster related links
 - Cluster job submission commands [[LINK]](https://uwaterloo.ca/math-faculty-computing-facility/resources/researchers/computing/sun-grid-engine-sge-batch-queuing-system/basic-sun-grid-engine-sge-job)
 
 ## RNA-Seq workflow development
