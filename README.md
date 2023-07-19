@@ -24,7 +24,9 @@ There are lots of good introductions to Linux online. I recommend this one https
 We are essentially going to follow the RNA SOP provided by H3Africa https://h3abionet.github.io/H3ABionet-SOPs/RNA-Seq and we will split it into three phases as described in the workflow.
 
 
-## PHASE1
+## PHASE 1
+
+### Checking raw reads quality and trimming of reads
 
 [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
 
@@ -78,3 +80,17 @@ do
 done
 
 ```
+After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
+
+
+## PHASE 2
+
+### Generating gene/transcript level counts
+
+- The assembled transcriptome is available from NCBI and availabe on this link [link](https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GJ/ZM/GJZM01/GJZM01.1.fsa_nt.gz) avilable under BioProject: [PRJNA835347](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA835347)
+
+- Important to note the extension on this file  
+
+We can now proceed to map our reads to the reference transcriptome
+
+
