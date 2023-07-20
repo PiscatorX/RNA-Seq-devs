@@ -7,7 +7,7 @@ There are lots of good introductions to Linux online. I recommend this one https
 
 - How to log in to the HPC2 cluster https://www0.sun.ac.za/hpc/index.php?title=HOWTO_login
 
-- I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from the Stellebosch Center for Bioinformatics and Computational Biology on the HPC cluster, very relevant for our purpose.
+- I have found a [presentation](https://www.sun.ac.za/english/faculty/science/sci-bioinformatics/Documents/Linux%20and%20HPC.pdf) from the Stellenbosch Center for Bioinformatics and Computational Biology on the HPC2 cluster, very relevant for our purpose.
 
 ### Useful commands: Check the HPC2 [HOWTO check up on jobs](https://www0.sun.ac.za/hpc/index.php?title=HOWTO_check_up_on_jobs) for details
 <!-- # - quota -s # check disk quota -->
@@ -53,7 +53,7 @@ As multiqc will create the output directory, we do not have to create one.
 [TRIMMOMATIC](http://www.usadellab.org/cms/?page=trimmomatic)
 
 The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only process one pair or one read at a time. This means you have run n times where n = number of reads.
-Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames using ```basename``` command. For readability we write command line arguments over multiple lines. This is acheived by using a backslash which is an escape character telling bash that the command continues on the next line.
+Therefore, we loop through the files using for loop. We create a directory for output files and use the basename command to extract the filename of the script. We also extract the filename with out the extension for associated filenames using ```basename``` command. For readability we write command line arguments over multiple lines. This is achieved by using a backslash which is an escape character telling bash that the command continues on the next line.
 
 ```
 
@@ -80,17 +80,19 @@ do
 done
 
 ```
-After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
+The ```-summary``` is only available in the 0.39 version and raises errors in lower versions. After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
 
 
 ## PHASE 2
 
 ### Generating gene/transcript level counts
 
-- The assembled transcriptome is available from NCBI and availabe on this link [link](https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GJ/ZM/GJZM01/GJZM01.1.fsa_nt.gz) avilable under BioProject: [PRJNA835347](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA835347)
+- The assembled transcriptome is available from NCBI and available on this link [link](https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GJ/ZM/GJZM01/GJZM01.1.fsa_nt.gz) available under BioProject: [PRJNA835347](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA835347)
 
 - Important to note the extension on this file  
 
-We can now proceed to map our reads to the reference transcriptome
+We can now proceed to map our reads to the reference transcriptome.
+
+[BOWTIE 2]
 
 
