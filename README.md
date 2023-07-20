@@ -68,11 +68,9 @@ do
     trimmomatic SE \
 	${SE_read} \
 	trimmed_reads/${output_readname} \
-	-trimlog trimmed_reads/trim_${SE_read} \
 	-threads 6 \
 	-phred33 \
 	-trimlog trimmed_reads/${read_basename}.log \
-	-summary trimmed_reads/${read_basename}.summary \
 	LEADING:10 \
 	TRAILING:10 \
 	SLIDINGWINDOW:25:10 \
@@ -80,7 +78,8 @@ do
 done
 
 ```
-The ```-summary``` is only available in the 0.39 version and raises errors in lower versions. After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
+
+After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
 
 
 ## PHASE 2
@@ -89,7 +88,7 @@ The ```-summary``` is only available in the 0.39 version and raises errors in lo
 
 - The assembled transcriptome is available from NCBI and available on this link [link](https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GJ/ZM/GJZM01/GJZM01.1.fsa_nt.gz) available under BioProject: [PRJNA835347](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA835347)
 
-- Important to note the extension on this file  
+- Important to note the extension on this file is .gz indicating that it is compressed file created using gzip (GNU zip) compression algorithm. Not all tool support this format so we have to uncompress this file with the following command``` gunzip <file.gz>``` 
 
 We can now proceed to map our reads to the reference transcriptome.
 
