@@ -73,7 +73,7 @@ do
 	-trimlog trimmed_reads/${read_basename}.log \
 	LEADING:10 \
 	TRAILING:10 \
-	SLIDINGWINDOW:25:10 \
+	SLIDINGWINDOW:25:20 \
 	MINLEN:50
 done
 
@@ -81,6 +81,9 @@ done
 
 After trimming we then run fastqc and multiqc to check the quality of our reads and to check if the trimming was was effective.
 
+### PHASE 1 in full
+
+![Phase1](slides/phase1.PNG)
 
 ## PHASE 2
 
