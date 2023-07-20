@@ -91,9 +91,9 @@ After trimming we then run fastqc and multiqc to check the quality of our reads 
 
 - The assembled transcriptome is available from NCBI and available on this l[link](https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GJ/ZM/GJZM01/GJZM01.1.fsa_nt.gz) under BioProject: [PRJNA835347](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA835347)
 
-- Important to note the extension on this file is .gz indicating that it is compressed file created using gzip (GNU zip) compression algorithm. Not all tool support this format so we have to uncompress this file with the following command ``` gunzip <file.gz>``` 
+- Important to note the extension on this file is .gz indicating that it is a compressed file created using gzip (GNU zip) compression algorithm. Not all tools support this file format so we have to uncompress this file with the following command ``` gunzip <file.gz>``` 
 
-We can now proceed to map our reads to the reference transcriptome.
+We can now proceed to map our reads to the reference transcriptome with bowtie.
 
 [BOWTIE 2](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)
 
