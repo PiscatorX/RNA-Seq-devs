@@ -164,6 +164,7 @@ We can now proceed to map our reads to the reference transcriptome with bowtie.
 
 Before aligning our reads to the transcriptome reference we first have to build an index, this index is behind why Bowtie is ultrafast and memory efficient. We also create a directory for storing our references and indexes.
 
+![bowtie2](slides/bowtie2.PNG)
 
 
 
