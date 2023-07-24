@@ -84,7 +84,71 @@ After trimming we then run fastqc and multiqc to check the quality of our reads 
 
 ### PHASE 1 in full
 
-![Phase1](slides/phase1.PNG)
+```
+#!/bin/bash
+#PBS -N RNA-seq-Phase1
+#PBS -l select=1:ncpus=4:mem=8GB
+#PBS -l walltime=12:00:00
+#PBS -m be
+
+
+
+rawread_dir=$1
+output_dir=$2
+threads=4
+
+module load app/fastqc app/multiqc app/Trimmomatic/0.36
+
+cd $PBS_O_WORKDIR
+
+mkdir -p ${output_dir}/rawreads_fastqc
+
+fastqc \
+    --threads ${threads} \
+    -o ${output_dir}/rawreads_fastqc \
+    ${rawread_dir}/*.fastq
+
+
+multiqc \
+  ${output_dir}/rawreads_fastqc \
+ -o  ${output_dir}/rawreads_multiqc
+
+
+mkdir -p ${output_dir}/trimmed_reads
+
+for SE_read in ${rawread_dir}/*.fastq
+do
+    #extract the read name without the extension
+    read_basename=$(basename ${SE_read} .fastq)
+    #extract the read name
+    output_readname=$(basename ${SE_read})
+    echo ${read_basename}
+    trimmomatic SE \
+    	${SE_read} \
+    	${output_dir}/trimmed_reads/${output_readname} \
+    	-threads ${threads} \
+    	-phred33 \
+    	-trimlog  ${output_dir}/trimmed_reads/${read_basename}.log \
+    	LEADING:10 \
+    	TRAILING:10 \
+    	SLIDINGWINDOW:25:20 \
+    	MINLEN:50
+done
+
+
+mkdir -p ${output_dir}/trimmed_fastqc
+
+fastqc \
+    --threads ${threads} \
+    -o ${output_dir}/trimmed_fastqc \
+    ${output_dir}/trimmed_reads/*.fastq
+
+
+multiqc \
+  ${output_dir}/trimmed_fastqc \
+ -o  ${output_dir}/trimmed_multiqc
+
+```
 
 ## PHASE 2
 
