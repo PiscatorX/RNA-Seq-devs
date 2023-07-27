@@ -166,5 +166,5 @@ Before aligning our reads to the transcriptome reference we first have to build 
 
 ![bowtie2](slides/bowtie2.PNG)
 
-
+The bowtie output file is in the Sequence Alignment/Map (SAM) Format. The format is controlled with a specified format. Our gene expression quantification is based on the data in this file, therefore it is important to have an understanding of the format to know what type of data can be extracted from the file. To do this is important to look at the [SAMv1](https://samtools.github.io/hts-specs/SAMv1.pdf) format specification document. The format specification may be a bit too technical luckily there are lots of tutorials online that explain the format in simpler terms.
 
