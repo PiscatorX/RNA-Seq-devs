@@ -53,8 +53,8 @@ As multiqc will create the output directory, we do not have to create one.
 
 [TRIMMOMATIC](http://www.usadellab.org/cms/?page=trimmomatic)
 
-The trimmomatic tool hase two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only process one pair or one read at a time. This means you have it has to be run n times where n = number of reads.
-Therefore, we loop through the files using a ```for``` loop. We create a directory for output files and use the ```basename``` command to extract the filename of the script. We also extract the filename without the extension from the associated filenames using ```basename``` command with the extention after the pathe. For readability we write command line arguments over multiple lines. This is achieved by using a backslash which is an escape character telling bash that the command continues on to the next line.
+The trimmomatic tool has two modes: PE (paired-end) and SE (single-end). We use the SE mode. The tools can only process one pair or one read at a time. This means you have it has to be run n times where n = number of reads.
+Therefore, we loop through the files using a ```for``` loop. We create a directory for output files and use the ```basename``` command to extract the filename of the script. We also extract the filename without the extension from the associated filenames using ```basename``` command with the extension after the path. For readability we write command line arguments over multiple lines. This is achieved by using a backslash which is an escape character telling bash that the command continues on to the next line.
 
 ```
 
@@ -164,7 +164,87 @@ We can now proceed to map our reads to the reference transcriptome with bowtie.
 
 Before aligning our reads to the transcriptome reference we first have to build an index, this index is behind why Bowtie is ultrafast and memory efficient. We also create a directory for storing our references and indexes.
 
-![bowtie2](slides/bowtie2.PNG)
+```
+#!/bin/bash
+
+#PBS -N Phase2-bowtie
+#PBS -l select=1:ncpus=12:mem=24GB
+#PBS -l walltime=12:00:00
+
+
+threads=12
+output_dir=/home/andhlovu/Phase2X
+Ref=/home/andhlovu/DB_REF/Zcapensis_transcriptome/GJZM01.1.fsa_nt
+index_basename=/home/andhlovu/DB_REF/Bowtie2/Z_capensis_transcriptome
+trimmed_reads=/home/andhlovu/RNA-Seq-Phase1X/trimmed_reads
+
+
+
+module load app/bowtie/2.3.4  app/samtools/1.17
+
+cd $PBS_O_WORKDIR
+
+mkdir -p $index_basename
+bowtie2-build \
+    --threads ${threads} \
+    ${Ref} \
+    ${index_basename}
+
+
+mkdir -p $output_dir/BAM
+mkdir -p $output_dir/SAM
+for SE_read in ${trimmed_reads}/*.fastq
+do
+    base_fname=$(basename ${SE_read} .fastq)
+    SAM_file=${base_fname}.sam
+    BAM_file=${base_fname}.bam
+    metrics=${base_fname}.metrics
+    quick_stats=${base_fname}.quick_stats
+
+    
+    bowtie2 \
+       --threads ${threads} \
+       -x ${index_basename} \
+       -U ${SE_read} \
+       -S ${output_dir}/SAM/${SAM_file} \
+       --met-file ${output_dir}/SAM/${metrics} 2> $output_dir/SAM/${quick_stats}          
+
+    
+   samtools \
+       view \
+       --threads ${threads} \
+        ${output_dir}/SAM/${SAM_file} \
+       -F 4 \
+       -b \
+       -o  ${output_dir}/BAM/${BAM_file}
+
+
+    samtools \
+	sort \
+	${output_dir}/BAM/${BAM_file} \
+	--threads  ${threads} \
+	--reference ${Ref} \
+	-o  ${output_dir}/BAM/${base_fname}_sorted.bam
+
+    
+    samtools \
+	index \
+	-@  ${threads} \
+	${output_dir}/BAM/${base_fname}_sorted.bam 
+         
+
+    samtools \
+	flagstat \
+	${BAM} \
+	--threads  ${threads}  > ${output_dir}/BAM/${base_fname}.flagstat    
+
+done
+
+```
 
 The bowtie output file is in the Sequence Alignment/Map (SAM) Format. The format is controlled with a specified format. Our gene expression quantification is based on the data in this file, therefore it is important to have an understanding of the format to know what type of data can be extracted from the file. To do this, it is important to look at the [SAMv1](https://samtools.github.io/hts-specs/SAMv1.pdf) format specification document. The format specification may be a bit too technical luckily there are lots of tutorials online that explain the format in simpler terms.
 
+
+[SALMON](https://salmon.readthedocs.io/en/latest/salmon.html#quantifying-in-alignment-based-mode)
+
+Salmon is quasi-mapper and transcript quantifier. Instead of using the Salmon quasi-mapping, since we have already mapped our reads to the reference using bowtie, we will use the alignment mode ```salmon quant```. We will pass our *.bam files to to Salmon, not the sorted files see [here](https://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) for why. Salmon will produce a ```quant.sf``` and several auxiliary files in output folder. The quant files and auxiliary files are required for downstream analysis so it is best to keep them together. 
