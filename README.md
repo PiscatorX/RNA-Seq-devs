@@ -247,4 +247,29 @@ The bowtie output file is in the Sequence Alignment/Map (SAM) Format. The format
 
 [SALMON](https://salmon.readthedocs.io/en/latest/salmon.html#quantifying-in-alignment-based-mode)
 
-Salmon is quasi-mapper and transcript quantifier. Instead of using the Salmon quasi-mapping, since we have already mapped our reads to the reference using bowtie, we will use the alignment mode ```salmon quant```. We will pass our *.bam files to to Salmon, not the sorted files see [here](https://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) for why. Salmon will produce a ```quant.sf``` and several auxiliary files in output folder. The quant files and auxiliary files are required for downstream analysis so it is best to keep them together. 
+Salmon is quasi-mapper and transcript quantifier. Instead of using the Salmon quasi-mapping, since we have already mapped our reads to the reference using bowtie, we will use the alignment mode ```salmon quant```. We will pass our *.bam files to Salmon, **not** the sorted files see [here](https://salmon.readthedocs.io/en/latest/salmon.html#using-salmon) for why. So you will have to move the sorted into another location.  Salmon will produce a ```quant.sf``` and several auxiliary files in output folder. The quant files and auxiliary files are required for downstream analysis so it is best to keep them together.
+
+```
+
+for bam in ${output_dir}/BAM/*.bam
+do
+
+base_name=$(basename ${bam} .bam)
+
+salmon \
+    quant \
+    -l A \
+    --gcBias \
+    -a ${bam} \
+    -t  ${Ref} \
+    --threads ${threads} \
+    -o ${base_name}
+
+mv ${base_name}/quant.sf  ${base_name}/${base_name}.sf    
+
+
+done
+
+```
+
+
