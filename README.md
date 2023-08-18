@@ -277,4 +277,4 @@ done
 
 [TXIMPORT](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html)
 
-To use the salmon output in DESeq2 we first need to import our quant files into R using the ```txtimport``` package
+To use the salmon output in DESeq2 we first need to import our quant files into R using the ```txtimport``` package, see the [jupyter notebook](import_quant.ipynb) for the script to import file s
