@@ -285,7 +285,7 @@ To import our quant file, we will make used of our metadata file which contains 
 
 To obtain a gene-level differential analysis, we will use the annotation data for the [UniProtKB/Swiss-Prot entries](https://www.uniprot.org/). The GO terms have extracted from the GO term annotation provided by Uniprot; however, only plant specific go terms have used. The files provided here are mapping for transcript_ID to Swissprot_IDs to GO terms for each GO classification. It is important to note that Some transcripts may not have corresponding IDs or GO terms, so numbers will vary with each mapping.
 
-To make use of these for DESeq the Transcipt_ID to SwissProt_ID mapping in the [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv) is provided during to the [tximport[(https://www.rdocumentation.org/packages/tximport/versions/1.0.3/topics/tximport) for the tx2gene argument which expects an two column file. The rest of the files provided here can you used for further look up transcript mappings, check the description column.
+To make use of these for DESeq the Transcipt_ID to SwissProt_ID mapping in the [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv) is provided during to the [tximport](https://www.rdocumentation.org/packages/tximport/versions/1.0.3/topics/tximport) for the tx2gene argument which expects an two column file. The rest of the files provided here can you used for further look up transcript mappings, check the description column.
 
 | Filename	| Description/columns	|
 |---------------|-----------------------|
