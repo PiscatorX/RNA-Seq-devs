@@ -272,7 +272,7 @@ done
 
 ## PHASE 3
 
-### Perform statistical analysis to find differentially expressed genes
+### Perform statistical analysis to find deferentially expressed genes
 
 
 [TXIMPORT](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html) and [DESeq2](https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
@@ -281,11 +281,11 @@ To use the salmon output in DESeq2 we first need to import our quant files into 
 
 To import our quant file, we will make used of our metadata file which contains our readnames and additional experimental data. The metadata file should compiled using the sequencing report as the read ID may not necessarily contain the sample ID. So the metadata must be triple-checked to ensure controls and treatments are not mixed up.
 
-## Annotation of DEGS
+## Annotation of Differentially expressed genes (DEGs)
 
 To obtain a gene-level differential analysis, we will use the annotation data for the [UniProtKB/Swiss-Prot entries](https://www.uniprot.org/). The GO terms have extracted from the GO term annotation provided by Uniprot; however, only plant specific go terms have used. The files provided here are mapping for transcript_ID to Swissprot_IDs to GO terms for each GO classification. It is important to note that Some transcripts may not have corresponding IDs or GO terms, so numbers will vary with each mapping.
 
-To make use of these for DESeq the Transcipt_ID to SwissProt_ID mapping in the [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv) is provided during to the [tximport](https://www.rdocumentation.org/packages/tximport/versions/1.0.3/topics/tximport) for the tx2gene argument which expects an two column file. The rest of the files provided here can you used for further look up transcript mappings, check the description column.
+To make use of these for DESeq the Transcipt_ID to SwissProt_ID mapping in the [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv) is provided during to the [tximport](https://www.rdocumentation.org/packages/tximport/versions/1.0.3/topics/tximport) function under the ```tx2gene``` argument which expects an two column file. The rest of the files provided here can be used for addition transcript mappings or to provide additional information for the DEGs, check the description column.
 
 | Filename	| Description/columns	|
 |---------------|-----------------------|
