@@ -272,7 +272,7 @@ done
 
 ## PHASE 3
 
-### Perform statistical analysis to find deferentially expressed genes
+### Perform statistical analysis to find differentially expressed genes
 
 
 [TXIMPORT](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html) and [DESeq2](https://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html)
