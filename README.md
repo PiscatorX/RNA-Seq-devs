@@ -285,9 +285,9 @@ To import our quant file, we will make used of our metadata file which contains 
 
 | Filename	| Description/columns	|
 |---------------|-----------------------|
-| GJZM01.blastx					| SwissProt, BLastX |
-| GJZM01.1.blastx_swissprot2GO_clean.tsv	| Transcipt_ID, SwissProt_ID, GO-prefix, GO_ID, GO_classificaion, GO_term |
-| GJZM01.1.blastx_swissprot.tsv			| Transcript_ID, SwissProt_ID |
-| GJZM01.1.fsa_nt.transdecoder.cds		| Transdecoder output: Nucleotide coding sequences |
-| GJZM01.1.fsa_nt.transdecoder.gff3		| Transdecoder output: [GFF3 file](http://www.ensembl.org/info/website/upload/gff3.html) |
-| GJZM01.1.fsa_nt.transdecoder.pep		| Transdecoder output: Peptide sequences for the final candidate ORFs |
+| [GJZM01.blastx](Annotation-data/GJZM01.blastx)					| SwissProt, BLastX |
+| [GJZM01.1.blastx_swissprot2GO_clean.tsv](Annotation-data/GJZM01.1.blastx_swissprot2GO_clean.tsv)	| Transcipt_ID, SwissProt_ID, GO-prefix, GO_ID, GO_classificaion, GO_term |
+| [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv)			| Transcript_ID, SwissProt_ID |
+| [GJZM01.1.fsa_nt.transdecoder.cds](Annotation-data/GJZM01.1.fsa_nt.transdecoder.cds)		| Transdecoder output: Nucleotide coding sequences |
+| [GJZM01.1.fsa_nt.transdecoder.gff3](Annotation-data/GJZM01.1.fsa_nt.transdecoder.gff3)		| Transdecoder output: [GFF3 file](http://www.ensembl.org/info/website/upload/gff3.html) |
+| [GJZM01.1.fsa_nt.transdecoder.pep](Annotation-data/GJZM01.1.fsa_nt.transdecoder.pep)		| Transdecoder output: Peptide sequences for the final candidate ORFs |
