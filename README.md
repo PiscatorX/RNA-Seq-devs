@@ -289,7 +289,7 @@ To make use of these data under DESeq2 the Transcipt_ID to SwissProt_ID mapping 
 
 | Filename	| Description/columns	|
 |---------------|-----------------------|
-v|[GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv)			| Transcript_ID, SwissProt_ID |
+|[GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv)			| Transcript_ID, SwissProt_ID |
 | [GJZM01.1.blastx_swissprot2GO_clean.tsv](Annotation-data/GJZM01.1.blastx_swissprot2GO_clean.tsv)	| Transcipt_ID, SwissProt_ID, GO-prefix, GO_ID, GO_classificaion, GO_term |
 | [GJZM01.blastx](Annotation-data/GJZM01.blastx)					| BlastX results for the transcriptome against SwissProt |
 | [GJZM01.1.fsa_nt.transdecoder.cds](Annotation-data/GJZM01.1.fsa_nt.transdecoder.cds)		| Transdecoder output: Nucleotide coding sequences |
