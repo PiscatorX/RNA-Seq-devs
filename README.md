@@ -277,12 +277,9 @@ done
 
 [TXIMPORT](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html)
 
-<<<<<<< Updated upstream
-To use the salmon output in DESeq2 we first need to import our quant files into R using the ```txtimport``` package, see the [jupyter notebook](import_quant.ipynb) for the script to import file s
-=======
-To use the salmon output in DESeq2 we first need to import our quant files into R using the ```tximport``` package. This also a new package [tximeta](https://bioconductor.org/packages/devel/bioc/vignettes/tximeta/inst/doc/tximeta.html) which extends the functionality of tximport; however, tximport is still supported. The major difference being tximport just requires just the quant.sf file while tximeta requires the full salmon output with auxilary file.
+To use the salmon output in DESeq2 we first need to import our quant files into R using the ```tximport``` package. This also a new package [tximeta](https://bioconductor.org/packages/devel/bioc/vignettes/tximeta/inst/doc/tximeta.html) which extends the functionality of tximport; however, tximport is still supported. The major difference being tximport just requires the quant.sf file while tximeta requires the full salmon output with auxiliary file.
 
-To import our quant file, we will make used of our a metadata file which contains our readnames and additional experimental data. The metadata file should compiled using the sequencing report as the read ID may not necesarily contain sample id. So the metadata must be triple checked to ensure controls and treatments are not mixed up.
+To import our quant file, we will make used of our metadata file which contains our readnames and additional experimental data. The metadata file should compiled using the sequencing report as the read ID may not necessarily contain the sample ID. So the metadata must be triple-checked to ensure controls and treatments are not mixed up.
 
 
 
