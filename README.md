@@ -281,7 +281,3 @@ To use the salmon output in DESeq2 we first need to import our quant files into 
 
 To import our quant file, we will make used of our metadata file which contains our readnames and additional experimental data. The metadata file should compiled using the sequencing report as the read ID may not necessarily contain the sample ID. So the metadata must be triple-checked to ensure controls and treatments are not mixed up.
 
-
-
-
->>>>>>> Stashed changes
