@@ -283,14 +283,14 @@ To import our quant file, we will make used of our metadata file which contains 
 
 ## Annotation of DEGs
 
-To obtain a gene-level differential analysis, we will use the annotation data for the [UniProtKB/Swiss-Prot entries](https://www.uniprot.org/). The GO terms have been extracted from the Uniprot data; however, only plant specific go terms have used. For additional details, see the manuscript. The files provided here are mappings for transcript IDs to Swissprot IDs to GO terms for each GO classification. It is important to note that some transcripts may not have corresponding Swissprot IDs or GO classification/terms, so numbers will vary with each mapping.
+To obtain a gene-level differential analysis, we will use the annotation data for the [UniProtKB/Swiss-Prot entries](https://www.uniprot.org/). The GO terms have been extracted from the Uniprot data; however, only plant-specific go terms have been used. For additional details, see the manuscript. The files provided here are mappings for transcript IDs to Swissprot IDs to GO terms for each GO classification. It is important to note that some transcripts may not have corresponding Swissprot IDs or GO classification/terms, so numbers will vary with each mapping.
 
 To make use of these data under DESeq2 the Transcipt ID to SwissProt ID mapping in the [GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv) is provided during to the [tximport](https://www.rdocumentation.org/packages/tximport/versions/1.0.3/topics/tximport) function under the ```tx2gene``` argument which expects a two column file. The rest of the files provided here can be used for additional transcript mappings or to provide additional information for the DEGs, check the description column.
 
 | Filename	| Description/columns	|
 |---------------|-----------------------|
 |[GJZM01.1.blastx_swissprot.tsv](Annotation-data/GJZM01.1.blastx_swissprot.tsv)			| Transcript ID, SwissProt ID |
-| [GJZM01.1.blastx_swissprot2GO_clean.tsv](Annotation-data/GJZM01.1.blastx_swissprot2GO_clean.tsv)	| Transcipt ID, SwissProt ID, GO-prefix, GO ID, GO_classificaion, GO_term |
+| [GJZM01.1.blastx_swissprot2GO_clean.tsv](Annotation-data/GJZM01.1.blastx_swissprot2GO_clean.tsv)	| Transcipt ID, SwissProt ID, GO-prefix, GO ID, GO_classification, GO_term |
 | [GJZM01.blastx](Annotation-data/GJZM01.blastx)					| BlastX results for the transcriptome against SwissProt |
 | [GJZM01.1.fsa_nt.transdecoder.cds](Annotation-data/GJZM01.1.fsa_nt.transdecoder.cds)		| Transdecoder output: Nucleotide coding sequences |
 | [GJZM01.1.fsa_nt.transdecoder.gff3](Annotation-data/GJZM01.1.fsa_nt.transdecoder.gff3)		| Transdecoder output: [GFF3 file](http://www.ensembl.org/info/website/upload/gff3.html) |
