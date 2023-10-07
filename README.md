@@ -295,4 +295,4 @@ To make use of these data under DESeq2 the Transcipt ID to SwissProt ID mapping 
 | [GJZM01.1.fsa_nt.transdecoder.cds](Annotation-data/GJZM01.1.fsa_nt.transdecoder.cds)		| Transdecoder output: Nucleotide coding sequences |
 | [GJZM01.1.fsa_nt.transdecoder.gff3](Annotation-data/GJZM01.1.fsa_nt.transdecoder.gff3)		| Transdecoder output: [GFF3 file](http://www.ensembl.org/info/website/upload/gff3.html) |
 | [GJZM01.1.fsa_nt.transdecoder.pep](Annotation-data/GJZM01.1.fsa_nt.transdecoder.pep)		| Transdecoder output: Peptide sequences for the final candidate ORFs |
-| [swissprot2genename.tsv](Annotation-data/Annotation-data/) | Id mapping: SwissProt to Gene names |
+| [swissprot2genename.tsv](Annotation-data/swissprot2genename.tsv) | Id mapping: SwissProt to Gene names |
